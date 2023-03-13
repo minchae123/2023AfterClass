@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 public class AgentInput : MonoBehaviour, IAgentInput
 {
-
     [field: SerializeField] public UnityEvent<Vector2> OnMovementKeyPress { get; set; }
     [field: SerializeField] public UnityEvent<Vector2> OnPointerPositionChanged { get; set; }
     [field: SerializeField] public UnityEvent OnFireButtonPress { get; set; }
@@ -15,6 +14,15 @@ public class AgentInput : MonoBehaviour, IAgentInput
     private void Update()
     {
         GetMovementInput();
+        GetPointerInput();
+    }
+
+    private void GetPointerInput()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = 0;
+        Vector2 mouseInWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        OnPointerPositionChanged?.Invoke(mouseInWorldPos);
     }
 
     private void GetMovementInput()
