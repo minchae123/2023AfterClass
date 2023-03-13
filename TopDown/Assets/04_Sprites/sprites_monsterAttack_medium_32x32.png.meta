@@ -726,7 +726,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      sprites_monsterAttack_medium_32x32_23: 279903784815648996
+      sprites_monsterAttack_medium_32x32_1: -3203182419932676088
       sprites_monsterAttack_medium_32x32_15: 5090998835188246705
       sprites_monsterAttack_medium_32x32_24: -8780324928581303489
       sprites_monsterAttack_medium_32x32_11: 2821148886842922578
@@ -748,8 +748,8 @@ TextureImporter:
       sprites_monsterAttack_medium_32x32_0: -7486846100739356810
       sprites_monsterAttack_medium_32x32_4: 5618838281562226144
       sprites_monsterAttack_medium_32x32_13: -2592188483029062430
+      sprites_monsterAttack_medium_32x32_23: 279903784815648996
       sprites_monsterAttack_medium_32x32_22: 5802017951156592854
-      sprites_monsterAttack_medium_32x32_1: -3203182419932676088
       sprites_monsterAttack_medium_32x32_5: 633894759301095765
   spritePackingTag: 
   pSDRemoveMatte: 0
