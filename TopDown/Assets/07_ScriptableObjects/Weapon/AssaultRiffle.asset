@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AssaultRiffle
   m_EditorClassIdentifier: 
   ammoCapacity: 100
-  autoFire: 1
+  autoFire: 0
   weaponDelay: 0.1
   spreadAngle: 5
   bulletCount: 1

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AgentMovement : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class AgentMovement : MonoBehaviour
     protected Vector2 movementDirection;
 
     [SerializeField] private MovementDataSO movementDataSO;
+
+    public UnityEvent<float> OnVelocityChange;
 
     private void Awake()
     {
@@ -45,6 +48,7 @@ public class AgentMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        OnVelocityChange?.Invoke(currentVelocity);
         rigid.velocity = movementDirection * currentVelocity;
     }
 }

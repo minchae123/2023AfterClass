@@ -5,29 +5,47 @@ using UnityEngine;
 public class RegularBullet : PoolableMono
 {
     public bool isEnemy; // 적의 총알인가 ?
-    public int DamageFactor = 1; // 총알 데미지 계수
-
-    [SerializeField] private float TTL;
+    [SerializeField] BulletDataSO bulletData;
     [SerializeField] private float timeToLive; // 몇초동안 살아남을 것인가 ?
-    [SerializeField] private float bulletSpeed;
 
     private Rigidbody2D rigid;
     private bool isDead = false;
 
     private void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();    
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
         timeToLive += Time.fixedDeltaTime;
-        rigid.MovePosition(transform.position + transform.right * bulletSpeed * Time.fixedDeltaTime);
-        if(timeToLive >= TTL)
+        rigid.MovePosition(transform.position + transform.right * bulletData.bulletSpeed * Time.fixedDeltaTime);
+        if (timeToLive >= bulletData.lifeTime)
         {
             isDead = true;
             PoolManager.Instance.Push(this);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isDead) return;
+
+        HitObstacle(collision);
+
+    }
+
+    private void HitObstacle(Collider2D collision)
+    {
+        ImpactScript impact = PoolManager.Instance.Pop(bulletData.impactEnemyPrefab.name) as ImpactScript;
+        
+        Quaternion rot = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360f)));
+        impact.SetPositionAndRotation(collision.transform.position, rot);
+    }
+
+    private void HitEnemy(Collider2D collision)
+    {
+
     }
 
     public void SetPositionAndRoatation(Vector3 pos, Quaternion rot)
