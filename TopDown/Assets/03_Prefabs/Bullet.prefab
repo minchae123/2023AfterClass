@@ -98,7 +98,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.625, y: 0}
@@ -158,7 +158,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 0
-  DamageFactor: 1
-  TTL: 1.5
+  bulletData: {fileID: 11400000, guid: 68636eead2c74e84caa34c49b39bc1fe, type: 2}
   timeToLive: 1.5
-  bulletSpeed: 20

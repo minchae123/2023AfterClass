@@ -31,16 +31,24 @@ public class RegularBullet : PoolableMono
     {
         if (isDead) return;
 
-        HitObstacle(collision);
-
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            HitObstacle(collision);
+        }
     }
 
     private void HitObstacle(Collider2D collision)
     {
-        ImpactScript impact = PoolManager.Instance.Pop(bulletData.impactEnemyPrefab.name) as ImpactScript;
-        
-        Quaternion rot = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360f)));
-        impact.SetPositionAndRotation(collision.transform.position, rot);
+        ImpactScript impact = PoolManager.Instance.Pop(bulletData.impactObstaclePrefab.name) as ImpactScript;
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 10f); 
+        if(hit.collider != null)
+        {
+            Quaternion rot = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360f)));
+            impact.SetPositionAndRotation(hit.point + (Vector2)transform.right * 0.5f, rot);
+        }
+        isDead = true;
+        PoolManager.Instance.Push(this);
     }
 
     private void HitEnemy(Collider2D collision)

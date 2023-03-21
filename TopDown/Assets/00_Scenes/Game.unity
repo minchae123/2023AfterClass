@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef35b60dd75d0124f8b9134f246e3a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8177381591376553762, guid: df527096e0e3f1d4a903d7f6ce7f685a, type: 3}
+  poolingList: {fileID: 11400000, guid: 6854b70908712bd40ad2573a1ccb7d6a, type: 2}
 --- !u!1 &102054361
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 159026699}
   - component: {fileID: 159026703}
   - component: {fileID: 159026702}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collisions
   m_TagString: Untagged
   m_Icon: {fileID: 0}

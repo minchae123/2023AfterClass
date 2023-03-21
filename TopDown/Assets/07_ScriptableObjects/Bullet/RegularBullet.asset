@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7524e19bf6344cb4ca7f1ced152cadb9, type: 3}
   m_Name: RegularBullet
   m_EditorClassIdentifier: 
-  damage: 1
-  bulletSpeed: 1
-  impactObstaclePrefab: {fileID: 0}
+  damage: 5
+  bulletSpeed: 20
+  impactObstaclePrefab: {fileID: 4155293340241578378, guid: f14e30aab86466246b162248130e5ebf, type: 3}
   impactEnemyPrefab: {fileID: 0}
   lifeTime: 1.5

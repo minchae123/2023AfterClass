@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] private PoolableMono bulletPrefab;
+    [SerializeField] private PoolingListSO poolingList;
 
     private void Awake()
     {
@@ -23,6 +23,6 @@ public class GameManager : MonoBehaviour
     private void MakePool()
     {
         PoolManager.Instance = new PoolManager(transform); // 풀매니저 만들고
-        PoolManager.Instance.CreatePool(bulletPrefab, 20); // 총알 풀 완성
+        poolingList.list.ForEach(p => PoolManager.Instance.CreatePool(p.prefab, p.poolCount)); // 리스트에 p 로 모두 들어와서 foreach 도는거
     }
 }
