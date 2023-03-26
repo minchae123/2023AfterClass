@@ -37,7 +37,7 @@ public class Student2 : Student, Human
 public class Test : MonoBehaviour
 {
     private Collision2D co;
-
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         co = collision;
