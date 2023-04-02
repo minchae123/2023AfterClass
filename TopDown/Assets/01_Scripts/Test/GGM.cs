@@ -9,7 +9,7 @@ public class GGM : MonoBehaviour
     [SerializeField] private float speed = 3f;
     private Vector2 destination;
     private Camera mainCam;
-    private Tween t = null;
+    //private Tween t = null;
     private SpriteRenderer sr;
 
     private void Awake()

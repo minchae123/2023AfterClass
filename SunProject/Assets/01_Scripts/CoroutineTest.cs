@@ -4,33 +4,41 @@ using UnityEngine;
 
 public class CoroutineTest : MonoBehaviour
 {
-    private List<string> list = new List<string>();
-    IEnumerator t;
-
-    private void Start()
-    {
-        t = Test();
-    }
     private void Update()
     {
         if (Input.GetButtonDown("Jump"))
         {
-                t.MoveNext();
-                Debug.Log(t.Current);
+            StartCoroutine(DelayCall(3));
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("aaaay");
         }
     }
 
-    IEnumerator Test()
+    IEnumerator Start()
     {
-        Debug.Log("Someting!");
-        yield return 1;
-        Debug.Log("Someting!");
-        yield return 2;
-        Debug.Log("Someting!");
-        yield return 3;
-        Debug.Log("Someting!");
-        yield return 4;
+        var t1 = this.RunCoroutine(CoA());
+        var t2 = this.RunCoroutine(CoB());
 
+        while(!t1.IsDone && !t2.IsDone)
+        {
+            yield return null;
+        }
+        Debug.Log("co");
+    }
+
+    IEnumerator CoA()
+    {
+        yield return new WaitForSeconds(1);
+        Debug.Log("Co A Com");
+    }
+
+    IEnumerator CoB()
+    {
+        yield return new WaitForSeconds(3);
+        Debug.Log("Co B Com");
     }
 
     IEnumerator DelayCall(float t)
