@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="ChatMsg" class="chat">
+        <ui:VisualElement name="Profile" style="background-image: url(&apos;project://database/Packages/com.unity.2d.animation/Editor/Assets/SkinningModule/Icons/Light/character_Mode@3x.png?fileID=21300000&amp;guid=17fa84703485d314b8d6b5216987d4b1&amp;type=3#character_Mode@3x&apos;); -unity-background-scale-mode: scale-and-crop;" />
+        <ui:VisualElement name="Dialog">
+            <ui:Label text="HI ! Nice to meet you !" display-tooltip-when-elided="true" name="MsgLabel" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

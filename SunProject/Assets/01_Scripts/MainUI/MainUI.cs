@@ -14,12 +14,12 @@ public class MainUI : MonoBehaviour
 
         VisualElement root =  document.rootVisualElement;
 
-        Button btn = root.Q<Button>("BtnClick");
+       /* Button btn = root.Q<Button>("BtnClick");
         btn.RegisterCallback<ClickEvent>(e =>
         {
             Debug.Log("버튼 클릭");
             btn.style.backgroundColor = Random.ColorHSV();
-        });
+        });*/
     }
 
 
