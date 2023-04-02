@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class AsyncTest : MonoBehaviour
 {
-    private bool st = false;
     private ulong nu = 0;
 
     private void Awake()

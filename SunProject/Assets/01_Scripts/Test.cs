@@ -15,15 +15,24 @@ public class Student
     {
         return a - b;
     }
+
 }
 
 public class Test : MonoBehaviour
 {
+    
+    private void Start()
+    {
+        ABC();
+    }
+
     public void ABC()
     {
-        Student s = new Student();
-        MyDelegate a = s.Minus;
-
-        Debug.Log(a?.Invoke(3, 4));
+        MyDelegate a = delegate(int a, int b)
+        {
+            return a + b;
+        };
+        int result = a.Invoke(3, 4);
+        Debug.Log(result);
     }
 }
