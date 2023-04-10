@@ -63,7 +63,8 @@ public class GameManager : MonoBehaviour
                 enemy.transform.position = spawnPointList[idx].position;
                 enemy.ShowEnemy();
             }
+            yield return null;
         }
-        yield return null;
+
     }
 }

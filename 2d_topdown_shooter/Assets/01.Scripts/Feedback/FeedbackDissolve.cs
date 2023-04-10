@@ -13,7 +13,7 @@ public class FeedbackDissolve : Feedback
 
     public override void CompleteFeedback()
     {
-        spriteRenderer.material.SetInt("_isDissolve", 0);
+        spriteRenderer.material.SetInt("_IsDissolve", 0);
         spriteRenderer.material.DOComplete();
         spriteRenderer.material.SetFloat("_Dissolve", 1);
 
@@ -21,7 +21,7 @@ public class FeedbackDissolve : Feedback
 
     public override void CreateFeedback()
     {
-        spriteRenderer.material.SetInt("_isDissolve", 1);
+        spriteRenderer.material.SetInt("_IsDissolve", 1);
         spriteRenderer.material.DOFloat(0, "_Dissolve", duration).OnComplete(()=> FeedbackComplete?.Invoke());
     }
 }
