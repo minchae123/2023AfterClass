@@ -29,4 +29,9 @@ public class AgentAnimator : MonoBehaviour
     {
         OnFootStep?.Invoke();
     }
+
+    public void SetAnimationSpeed(float value)
+    {
+        animator.speed = value;
+    }
 }
