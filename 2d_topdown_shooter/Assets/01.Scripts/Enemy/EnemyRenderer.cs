@@ -10,6 +10,8 @@ public class EnemyRenderer : AgentRenderer
 
     private AgentAnimator animator;
 
+    private EffectScript effectScript;
+
     protected override void Awake()
     {
         base.Awake();
@@ -24,16 +26,17 @@ public class EnemyRenderer : AgentRenderer
     private IEnumerator ShowCoroutine(float time, Action CallBackAction)
     {
         Material mat = spriteRenderer.material;
-        
-        EffectScript script = PoolManager.Instance.Pop("DustEffect") as EffectScript;
-        script.transform.position = transform.position + offset;
-        script.PlayEffect();
+
+        effectScript = PoolManager.Instance.Pop("DustEffect") as EffectScript;
+        effectScript.transform.position = transform.position + offset;
+        effectScript.PlayEffect();
 
         transform.localPosition = offset;
         float curRate = 1f;
         float percent = 0;
         float curTime = 0;
         animator.SetAnimationSpeed(0);
+
         while(percent < 1)
         {
             curTime += Time.deltaTime;
@@ -46,8 +49,19 @@ public class EnemyRenderer : AgentRenderer
 
         animator.SetAnimationSpeed(1);
         transform.localPosition = Vector3.zero;
-        script.StopEffect();
+        effectScript.StopEffect();
 
         CallBackAction?.Invoke();
+    }
+
+    public void Reset()
+    {
+        StopAllCoroutines();
+        animator.SetAnimationSpeed(1);
+        spriteRenderer.material.SetFloat(showRateHash, -1f);
+        if(effectScript != null)
+        {
+            effectScript.StopEffect();
+        }
     }
 }

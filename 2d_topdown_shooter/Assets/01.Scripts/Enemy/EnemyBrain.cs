@@ -36,12 +36,6 @@ public class EnemyBrain : PoolableMono
 
     public void Update()
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            isActive = false;
-            enemyRenderer.ShowProgress(2f, () => { isActive = true; });
-        }
-
         if (isActive == false)
             return;
 
@@ -55,9 +49,21 @@ public class EnemyBrain : PoolableMono
         }
     }
 
+    public void ShowEnemy()
+    {
+        isActive = false;
+        enemyRenderer.ShowProgress(2f, () => { isActive = true; });
+    }
+
     public void Move(Vector2 dir, Vector2 pos)
     {
         OnMovementKeyPress?.Invoke(dir);
         OnPointerPositionChanged?.Invoke(pos);
+    }
+
+    public override void Reset()
+    {
+        isActive = false;
+        enemyRenderer.Reset();
     }
 }
