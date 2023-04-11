@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using DG.Tweening;
+using Sequence = DG.Tweening.Sequence;
 
 public class GameManager : MonoBehaviour
 {
@@ -58,6 +60,14 @@ public class GameManager : MonoBehaviour
             {
                 curTime = 0;
                 int idx = Random.Range(0, spawnPointList.Count);
+
+                // 시퀀스 줘서 4~6마리가 스폰포인트 반경 2 유닛 범위에서 순차적으로 나오게
+
+                Quaternion rot = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360f)));
+                Vector2 randomOffset = Random.insideUnitCircle * 2;
+
+                Sequence seq = DOTween.Sequence();
+                //seq.Append();
 
                 EnemyBrain enemy = PoolManager.Instance.Pop("EnemyGrowler") as EnemyBrain;
                 enemy.transform.position = spawnPointList[idx].position;

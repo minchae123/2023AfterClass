@@ -19,12 +19,14 @@ public class PopupText : PoolableMono
         textMesh.SetText(text);
         textMesh.color = color;
         textMesh.fontSize = fontSize;
+
+        ShowingSequence(1.5f);
     }
 
-    private void ShowingSequence()
+    private void ShowingSequence(float time)
     {
         Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DOMoveY(transform.position.y + 0.5f, 1f));
+        seq.Append(transform.DOMoveY(transform.position.y + 0.5f, time));
         seq.Join(textMesh.DOFade(0, 1f));
         seq.AppendCallback(() =>
         {

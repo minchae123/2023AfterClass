@@ -35,6 +35,10 @@ public class ItemCollector : MonoBehaviour
             if (Vector2.Distance(transform.position, item.transform.position) < 0.1f)
             {
                 int value = item.ItemData.GetAmount();
+
+                PopupText text = PoolManager.Instance.Pop("PopupText") as PopupText;
+                text.Setup(value.ToString(), transform.position + new Vector3(0, 0.5f, 0), item.ItemData.popupTextColor);
+
                 ProcessItem(item.ItemData.itemType, value);
                 item.PickUpResource();
                 collectList.RemoveAt(i);
@@ -42,7 +46,6 @@ public class ItemCollector : MonoBehaviour
             }
         }
     }
-
 
     private void ProcessItem(ItemType type, int value)
     {
@@ -53,7 +56,6 @@ public class ItemCollector : MonoBehaviour
                 break;
         }
     }
-
 
     private void OnDrawGizmos()
     {

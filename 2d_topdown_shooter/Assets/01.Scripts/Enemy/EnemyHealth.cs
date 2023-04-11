@@ -31,9 +31,9 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     {
         if (idDead) return;
 
-        Debug.Log(damage);
+        //Debug.Log(damage);
         curHealth -= damage;
-        
+
         _aiActionData.hitPoint = hitPoint;
         _aiActionData.hitNormal = normal;
 
