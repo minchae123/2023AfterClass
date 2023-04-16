@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class AITransition : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<AIDecision> decisions = null;
+    public AIState nextState;
+
+
+    public void Setup(AIBrain brain)
     {
-        
+        decisions = new List<AIDecision>();
+        GetComponents<AIDecision>(decisions);
+        decisions.ForEach(d => d.Setup(brain));
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool CheckTransition()
     {
-        
+        bool result = false;
+        foreach(AIDecision d in decisions)
+        {
+            result = d.MakeADecision();
+            if (d.IsReverse)
+                result = !result;
+            if (result == false)
+                break;
+        }
+        // 여기까지 왔는데 true는 모든 조건 전부 true
+        return result;
     }
 }

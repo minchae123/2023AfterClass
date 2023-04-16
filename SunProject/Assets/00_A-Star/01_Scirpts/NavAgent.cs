@@ -13,6 +13,8 @@ public class NavAgent : MonoBehaviour
     private int moveIdx = 0;
     private bool isMoving = false; // 이동 중인지
 
+    public bool IsArrived = false; // 도착했는가
+
     private PriorityQueue<Node> openList;
     private List<Node> closeList; // 방문한 곳
 
@@ -29,8 +31,10 @@ public class NavAgent : MonoBehaviour
             destination = value;
             isMoving = CalcRoute();
             moveIdx = 0;
-            nextPos = TileMapManager.Instance.GetWolrdPos(routePath[0]);
+            if(routePath.Count > 0) 
+                nextPos = TileMapManager.Instance.GetWolrdPos(routePath[0]);
             DrawRoutePath();
+            IsArrived = false;
         }
     }
 
@@ -70,12 +74,13 @@ public class NavAgent : MonoBehaviour
         {
             Vector2 dir = (nextPos - transform.position).normalized;
 
-            transform.Translate(dir * speed * Time.deltaTime);
+            transform.Translate(dir * speed * Time.deltaTime, Space.World);
 
             if(Vector2.Distance(nextPos, transform.position) < 0.1f)
             {
                 if (GetNextTarget() == false)
                 {
+                    IsArrived = true; // 도착
                     isMoving = false;
                 }
             }
@@ -96,6 +101,11 @@ public class NavAgent : MonoBehaviour
         line.enabled = true;
         line.positionCount = routePath.Count;
         line.SetPositions(routePath.Select(p => TileMapManager.Instance.GetWolrdPos(p)).ToArray());
+    }
+
+    public void StopImmediately()
+    {
+        isMoving = false;
     }
 
     public bool CalcRoute()
@@ -144,13 +154,8 @@ public class NavAgent : MonoBehaviour
                 last = last.parent;
             }
 
-            routePath.Add(curPos);
+            //routePath.Add(curPos);
             routePath.Reverse();
-
-            /*foreach(Vector3Int pos in routePath)
-            {
-                Debug.Log(pos);
-            }*/
         }
         return result;
     }
