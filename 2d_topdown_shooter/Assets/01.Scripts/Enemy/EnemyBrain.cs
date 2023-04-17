@@ -9,6 +9,7 @@ public class EnemyBrain : PoolableMono
 
     public UnityEvent<Vector2> OnMovementKeyPress;
     public UnityEvent<Vector2> OnPointerPositionChanged; //마우스방향전환을 
+    public UnityEvent OnAttackButtonPress = null;
 
     public Transform BasePosition; //이게 거리측정을 몬스터의 바닥에서 
 
@@ -59,6 +60,11 @@ public class EnemyBrain : PoolableMono
     {
         OnMovementKeyPress?.Invoke(dir);
         OnPointerPositionChanged?.Invoke(pos);
+    }
+
+    public void Attack()
+    {
+        OnAttackButtonPress?.Invoke();
     }
 
     public override void Reset()

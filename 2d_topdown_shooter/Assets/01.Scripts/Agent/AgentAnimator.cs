@@ -7,12 +7,21 @@ public class AgentAnimator : MonoBehaviour
 {
     protected Animator animator;
     protected readonly int walkBoolHash = Animator.StringToHash("Walk");
+    protected readonly int deathTriggerHash = Animator.StringToHash("Death");
 
     public UnityEvent OnFootStep = null;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+    }
+
+    public void DeathTrigger(bool value)
+    {
+        if (value)
+            animator.SetTrigger(deathTriggerHash);
+        else
+            animator.SetTrigger(deathTriggerHash);
     }
 
     public void AnimatePlayer(float velocity)

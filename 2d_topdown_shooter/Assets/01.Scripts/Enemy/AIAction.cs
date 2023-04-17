@@ -9,7 +9,7 @@ public abstract class AIAction : MonoBehaviour
 
     public virtual void SetUp(Transform parentTrm)
     {
-        parentTrm.Find("AI").GetComponent<AIActionData>();
+        actionData = parentTrm.Find("AI").GetComponent<AIActionData>();
         enemyBrain = parentTrm.GetComponent<EnemyBrain>();
     }
 

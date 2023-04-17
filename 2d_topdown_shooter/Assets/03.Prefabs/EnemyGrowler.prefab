@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 3822742133921653881}
   - component: {fileID: 3822742133921653877}
   - component: {fileID: 3822742133921653874}
+  - component: {fileID: 3502379571888767706}
   m_Layer: 7
   m_Name: EnemyGrowler
   m_TagString: Untagged
@@ -360,6 +361,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnAttackButtonPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3502379571888767706}
+        m_TargetAssemblyTypeName: EnemyMeleeAttack, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   BasePosition: {fileID: 3822742135627966639}
   CurrentState: {fileID: 3822742134175366684}
   isActive: 0
@@ -391,6 +407,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3502379571888767706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822742133921653880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a9c6e9418f254459342b77af663fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackFeedback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3822742134938823379}
+        m_TargetAssemblyTypeName: AgentSound, Assembly-CSharp
+        m_MethodName: PlayAttackClip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  atkDelay: 1
+  damage: 1
 --- !u!1 &3822742133939610737
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3822742134657740382}
   - component: {fileID: 3822742134657740383}
+  - component: {fileID: 1257156049721862999}
   m_Layer: 0
   m_Name: AttackState
   m_TagString: Untagged
@@ -702,9 +748,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a77b1a9006a656247b6a093b84872c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Actions: []
+  Actions:
+  - {fileID: 1257156049721862999}
   Transitions:
   - {fileID: 3822742135282050335}
+--- !u!114 &1257156049721862999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822742134657740353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79dfd939a17688c43b36fcaef909cf3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3822742134747970048
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,7 +1034,7 @@ MonoBehaviour:
   - {x: -0.111867905, y: -0.4462709, z: 0}
   m_ShapePathHash: 1594478621
   m_Mesh: {fileID: 0}
-  m_InstanceId: 54988
+  m_InstanceId: 49060
 --- !u!114 &3822742134938823379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1240,6 +1299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoint: {x: 0, y: 0, z: 0}
   hitNormal: {x: 0, y: 0, z: 0}
+  isAttack: 0
 --- !u!1 &3822742135627966638
 GameObject:
   m_ObjectHideFlags: 0
