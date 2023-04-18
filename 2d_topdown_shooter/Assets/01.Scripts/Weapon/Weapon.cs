@@ -16,7 +16,8 @@ public class Weapon : MonoBehaviour
 
     public UnityEvent OnShoot;
     public UnityEvent OnShootNoAmmo;
-    public UnityEvent OnStopShooting; 
+    public UnityEvent OnStopShooting;
+    public UnityEvent<int> OnChageAmmo = null;
     protected bool _isShooting; //현재 발사중인가?
     protected bool _delayCoroutine = false;
 
@@ -57,6 +58,7 @@ public class Weapon : MonoBehaviour
                 {
                     ShootBullet();
                     Ammo--;
+                    OnChageAmmo?.Invoke(Ammo);
                 }
             }else
             {

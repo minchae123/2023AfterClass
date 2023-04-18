@@ -46,7 +46,6 @@ public class EnemyRenderer : AgentRenderer
             transform.localPosition = Vector3.Lerp(offset, Vector3.zero, percent);
             yield return null;
         }
-
         animator.SetAnimationSpeed(1);
         transform.localPosition = Vector3.zero;
         effectScript.StopEffect();
@@ -59,9 +58,9 @@ public class EnemyRenderer : AgentRenderer
         StopAllCoroutines();
         animator.SetAnimationSpeed(1);
         spriteRenderer.material.SetFloat(showRateHash, -1f);
-        if(effectScript != null)
+        /*if(effectScript != null && effectScript.gameObject.activeSelf)
         {
             effectScript.StopEffect();
-        }
+        }*/
     }
 }

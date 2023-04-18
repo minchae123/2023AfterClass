@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6db1fa9a8f95e499ff890d5b398840, type: 3}
   m_Name: HealthPack
   m_EditorClassIdentifier: 
-  Rate: 0
-  ItemPrefab: {fileID: 0}
-  itemType: 0
+  Rate: 0.2
+  ItemPrefab: {fileID: 6780560460521568309, guid: 45d8af5428c483241b46ea5ce8749e46, type: 3}
+  itemType: 1
   minAmount: 1
-  maxAmount: 5
-  popupTextColor: {r: 0, g: 0, b: 0, a: 0}
-  useSound: {fileID: 0}
+  maxAmount: 1
+  popupTextColor: {r: 0.56838846, g: 1, b: 0, a: 1}
+  useSound: {fileID: 8300000, guid: 909a6adbaacd6a44480dcf215036ce85, type: 3}

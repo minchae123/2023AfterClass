@@ -12,6 +12,7 @@ public class ItemCollector : MonoBehaviour
     private List<ItemScript> collectList = new List<ItemScript>(); 
 
     public UnityEvent<int> OnAmmoAdded = null;
+    public UnityEvent<int> OnHealthAdded = null;
 
     private void FixedUpdate()
     {
@@ -53,6 +54,9 @@ public class ItemCollector : MonoBehaviour
         {
             case ItemType.Ammo:
                 OnAmmoAdded?.Invoke(value);
+                break;
+            case ItemType.Health:
+                OnHealthAdded?.Invoke(value);
                 break;
         }
     }

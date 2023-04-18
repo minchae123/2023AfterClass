@@ -6,54 +6,55 @@ using UnityEngine.Events;
 
 public class AgentMovement : MonoBehaviour
 {
-    private Rigidbody2D rigid;
+    private Rigidbody2D _rigid;
 
     [SerializeField]
-    private MovementDataSO movementData; 
+    private MovementDataSO _movementData; 
     
-    protected float currentVelocity = 0;
-    protected Vector2 movementDirection;
+    protected float _currentVelocity = 0;
+    protected Vector2 _movementDirection;
 
     public UnityEvent<float> OnVelocityChange; //플레이어의 속도가 변했을 때 발생하는 이벤트 
 
     private void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
+        _rigid = GetComponent<Rigidbody2D>();
     }
 
-    public void StopImmediately()
-    {
-        rigid.velocity = Vector2.zero;
+    public void StopImmediately(){
+        _movementDirection = Vector2.zero;
+        _rigid.velocity = Vector2.zero;
+        _currentVelocity = 0;
     }
 
     public void MoveAgent(Vector2 movementInput)
     {
         if(movementInput.sqrMagnitude > 0)
         {
-            if(Vector2.Dot(movementInput, movementDirection) < 0)
+            if(Vector2.Dot(movementInput, _movementDirection) < 0)
             {
-                currentVelocity = 0;
+                _currentVelocity = 0;
             }
-            movementDirection = movementInput.normalized;
+            _movementDirection = movementInput.normalized;
         }
-        currentVelocity = CalcSpeed(movementInput);
+        _currentVelocity = CalcSpeed(movementInput);
     }
 
     private float CalcSpeed(Vector2 movementInput)
     {
         if(movementInput.sqrMagnitude > 0)
         {
-            currentVelocity += movementData._acceleration * Time.deltaTime;
+            _currentVelocity += _movementData._acceleration * Time.deltaTime;
         }else
         {
-            currentVelocity -= movementData._deAcceleration * Time.deltaTime;
+            _currentVelocity -= _movementData._deAcceleration * Time.deltaTime;
         }
-        return Mathf.Clamp(currentVelocity, 0, movementData._maxSpeed);
+        return Mathf.Clamp(_currentVelocity, 0, _movementData._maxSpeed);
     }
 
     private void FixedUpdate()
     {
-        OnVelocityChange?.Invoke(currentVelocity); //현재 속도를 계속 업데이트 시켜준다.
-        rigid.velocity = movementDirection * currentVelocity;
+        OnVelocityChange?.Invoke(_currentVelocity); //현재 속도를 계속 업데이트 시켜준다.
+        _rigid.velocity = _movementDirection * _currentVelocity;
     }
 }

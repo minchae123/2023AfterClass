@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6336331315184268742}
   - component: {fileID: 7488587336950052825}
+  - component: {fileID: 5196891418483009537}
   m_Layer: 7
   m_Name: ItemDropper
   m_TagString: Untagged
@@ -48,6 +49,22 @@ MonoBehaviour:
   dropEffect: 1
   dropPower: 2
   dropChance: 0.8
+--- !u!114 &5196891418483009537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2682123692679156550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c5c8be801c37647b81fc7e916962de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropTable: {fileID: 11400000, guid: f7be000fdf6010f49a81b50126586f33, type: 2}
+  dropEffect: 1
+  dropPower: 2
+  dropChance: 1
 --- !u!1 &3822742133807199952
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +335,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5196891418483009537}
+        m_TargetAssemblyTypeName: ItemDropper, Assembly-CSharp
+        m_MethodName: DropItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3822742133921653877}
+        m_TargetAssemblyTypeName: EnemyBrain, Assembly-CSharp
+        m_MethodName: Dead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3822742133921653877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,6 +417,57 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnResetPool:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3822742133921653878}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3822742134432961462}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3822742133921653874}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3822742133921653881}
+        m_TargetAssemblyTypeName: EnemyHealth, Assembly-CSharp
+        m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   BasePosition: {fileID: 3822742135627966639}
   CurrentState: {fileID: 3822742134175366684}
   isActive: 0
@@ -391,7 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e1e30d39a8c064e90b953b0424b19d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementData: {fileID: 11400000, guid: b92b6863e6f592c4ca0afcf646d410f6, type: 2}
+  _movementData: {fileID: 11400000, guid: b92b6863e6f592c4ca0afcf646d410f6, type: 2}
   OnVelocityChange:
     m_PersistentCalls:
       m_Calls:
@@ -1034,7 +1126,7 @@ MonoBehaviour:
   - {x: -0.111867905, y: -0.4462709, z: 0}
   m_ShapePathHash: 1594478621
   m_Mesh: {fileID: 0}
-  m_InstanceId: 49060
+  m_InstanceId: 58422
 --- !u!114 &3822742134938823379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1394,4 +1486,16 @@ MonoBehaviour:
   duration: 0.4
   FeedbackComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3822742133921653877}
+        m_TargetAssemblyTypeName: EnemyBrain, Assembly-CSharp
+        m_MethodName: GotoPool
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

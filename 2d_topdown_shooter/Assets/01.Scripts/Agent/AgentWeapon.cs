@@ -17,6 +17,16 @@ public class AgentWeapon : MonoBehaviour
 
     [SerializeField] private int maxTotalAmmo = 9999, totalAmmo = 300; // 최대 9999발 최초 300발
 
+    public int TotalAmmo { 
+        get => totalAmmo;
+        set
+        {
+            totalAmmo = value;
+            totalAmmo = Mathf.Clamp(totalAmmo, 0, maxTotalAmmo);
+            OnChangeTotalAmmo?.Invoke(weapon.Ammo, maxTotalAmmo);
+        }
+    }
+
     private AudioSource audioSource;
     private bool isReloading = false;
     public bool IsReloading => isReloading;
@@ -29,11 +39,17 @@ public class AgentWeapon : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    protected virtual void Start()
+    {
+        OnChangeTotalAmmo?.Invoke(weapon.Ammo, totalAmmo);
+    }
+
     #region 리로딩 관련 로직
     public void Reload()
     {
         if (isReloading == false && totalAmmo > 0 && weapon.AmmoFull == false)
         {
+            
             isReloading = true;
             weapon.StopShooting();
             StartCoroutine(ReloadCoroutine());
@@ -71,10 +87,17 @@ public class AgentWeapon : MonoBehaviour
         totalAmmo -= reloadedAmmo;
         weapon.Ammo += reloadedAmmo;
 
+        OnChangeTotalAmmo?.Invoke(weapon.Ammo, totalAmmo); // 현재 총의 탄창 수와 내가 가진 탄환수
+
         isReloading = false;
     }
     #endregion
 
+
+    public void AddAmmo(int count)
+    {
+        totalAmmo += count;
+    }
 
     public virtual void AimWeapon(Vector2 pointerPos)
     {

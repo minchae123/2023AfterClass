@@ -48,4 +48,10 @@ public class AgentHealth : MonoBehaviour, IDamageable
         OnHealthChanged?.Invoke(curHp, maxHP);
     }
 
+    public void AddHealth(int value)
+    {
+        Health += value;
+        OnHealthChanged?.Invoke(curHp, maxHP);
+    }
+
 }

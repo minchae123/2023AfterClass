@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public bool IsEnemy { get; set; }
     public Vector3 hitPoint { get; private set; }
 
-    protected bool idDead = false; //사망 여부를 나타내는 것
+    protected bool isDead = false; //사망 여부를 나타내는 것
 
     [SerializeField]
     protected int maxHealth; //이건 나중에 SO로 빼게될 거다.
@@ -29,9 +29,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     public void GetHit(int damage, GameObject damageDealer, Vector3 hitPoint, Vector3 normal)
     {
-        if (idDead) return;
+        if (isDead) return;
 
-        //Debug.Log(damage);
         curHealth -= damage;
 
         _aiActionData.hitPoint = hitPoint;
@@ -48,7 +47,13 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     private void DeadProcess()
     {
-        idDead = true;
+        isDead = true;
         OnDie?.Invoke();
+    }
+
+    public void Reset()
+    {
+        curHealth = maxHealth;
+        isDead = false;
     }
 }

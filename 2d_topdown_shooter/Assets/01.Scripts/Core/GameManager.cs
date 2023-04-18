@@ -61,21 +61,19 @@ public class GameManager : MonoBehaviour
                 curTime = 0;
                 int idx = Random.Range(0, spawnPointList.Count);
                 // 시퀀스 줘서 4~6마리가 스폰포인트 반경 2 유닛 범위에서 순차적으로 나오게
-                Quaternion rot = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 360f)));
 
-                EnemyBrain enemy = PoolManager.Instance.Pop("EnemyGrowler") as EnemyBrain;
-                enemy.transform.position = spawnPointList[idx].position;
-                enemy.ShowEnemy();
-
-                /*int r = Random.Range(4, 6);
-                Sequence seq = DOTween.Sequence();
-                seq.AppendCallback(() =>
+                int cnt = Random.Range(2, 5);
+                for(int i = 0; i < cnt; i++)
                 {
-                    Vector3 randomOffset = Random.insideUnitCircle * 2;
                     EnemyBrain enemy = PoolManager.Instance.Pop("EnemyGrowler") as EnemyBrain;
-                    enemy.transform.position = spawnPointList[idx].position + randomOffset;
+                    Vector2 posOffset = Random.insideUnitCircle * 2;
+
+                    enemy.transform.position = spawnPointList[idx].position + (Vector3)posOffset;
                     enemy.ShowEnemy();
-                }).AppendInterval(1).SetLoops(r);*/
+
+                    float showTime = Random.Range(0.1f, 0.3f);
+                    yield return new WaitForSeconds(showTime);
+                }
             }
             yield return null;
         }
