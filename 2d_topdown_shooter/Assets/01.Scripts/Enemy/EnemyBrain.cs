@@ -68,7 +68,7 @@ public class EnemyBrain : PoolableMono
         OnAttackButtonPress?.Invoke();
     }
 
-    public override void Reset()
+    public override void Init()
     {
         isActive = false;
         enemyRenderer.Reset();

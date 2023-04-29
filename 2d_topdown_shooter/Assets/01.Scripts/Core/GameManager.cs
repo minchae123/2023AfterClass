@@ -6,6 +6,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using DG.Tweening;
 using Sequence = DG.Tweening.Sequence;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class GameManager : MonoBehaviour
     public Transform PlayerTrm => _playerTrm;
 
     [SerializeField] private Transform spawnPointParent;
+    [SerializeField] private SpawnListSO spawnList;
+    private float[] spawnWeights;
 
     private List<Transform> spawnPointList;
 
@@ -36,8 +39,9 @@ public class GameManager : MonoBehaviour
         spawnPointList = new List<Transform>();
         spawnPointParent.GetComponentsInChildren<Transform>(spawnPointList);
         spawnPointList.RemoveAt(0);
-    }
 
+        spawnWeights = spawnList.spawnPairs.Select(s => s.spawnPercent).ToArray();
+    }
 
     private void MakePool()
     {
@@ -65,7 +69,9 @@ public class GameManager : MonoBehaviour
                 int cnt = Random.Range(2, 5);
                 for(int i = 0; i < cnt; i++)
                 {
-                    EnemyBrain enemy = PoolManager.Instance.Pop("EnemyGrowler") as EnemyBrain;
+                    int sIndex = GetRandomSpawnIndex();
+
+                    EnemyBrain enemy = PoolManager.Instance.Pop(spawnList.spawnPairs[sIndex].prefab.name) as EnemyBrain;
                     Vector2 posOffset = Random.insideUnitCircle * 2;
 
                     enemy.transform.position = spawnPointList[idx].position + (Vector3)posOffset;
@@ -77,5 +83,26 @@ public class GameManager : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    private int GetRandomSpawnIndex()
+    {
+        float sum = 0;
+        for(int i = 0; i < spawnWeights.Length; i++)
+        {
+            sum += spawnWeights[i];
+        }
+
+        float randomValue = Random.Range(0f, sum);
+        float tempSum = 0;
+
+        for (int i = 0; i < spawnWeights.Length; i++)
+        {
+            if(randomValue >= tempSum && randomValue < tempSum + spawnWeights[i])
+            {
+                return i;
+            }
+        }
+        return 0;
     }
 }

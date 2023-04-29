@@ -22,10 +22,13 @@ public class BallController : MonoBehaviour
     private Vector2 inputDir;
 
     private Camera mainCam;
+    private SpriteRenderer arrowRenderer;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        arrowRenderer = transform.Find("BallDirection").GetComponent<SpriteRenderer>();
+
         mainCam = Camera.main;
     }
 

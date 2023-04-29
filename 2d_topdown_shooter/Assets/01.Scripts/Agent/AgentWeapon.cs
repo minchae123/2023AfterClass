@@ -49,7 +49,6 @@ public class AgentWeapon : MonoBehaviour
     {
         if (isReloading == false && totalAmmo > 0 && weapon.AmmoFull == false)
         {
-            
             isReloading = true;
             weapon.StopShooting();
             StartCoroutine(ReloadCoroutine());

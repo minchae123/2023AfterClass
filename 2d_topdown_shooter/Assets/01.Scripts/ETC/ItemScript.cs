@@ -34,7 +34,7 @@ public class ItemScript : PoolableMono
         PoolManager.Instance.Push(this);
     }
 
-    public override void Reset()
+    public override void Init()
     {
         gameObject.layer = LayerMask.NameToLayer("Item");
         col.enabled = true;
