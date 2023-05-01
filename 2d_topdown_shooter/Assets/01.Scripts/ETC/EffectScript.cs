@@ -33,6 +33,7 @@ public class EffectScript : PoolableMono
     IEnumerator StopDelay(float t)
     {
         yield return new WaitForSeconds(t);
+        StopEffect();
     }
 
     IEnumerator DelayOff()

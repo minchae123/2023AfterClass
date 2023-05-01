@@ -116,7 +116,7 @@ public class AgentWeapon : MonoBehaviour
         if(weaponRenderer != null)
         {
             weaponRenderer.FlipSprite(desireAngle > 90f || desireAngle < -90f);
-            weaponRenderer.RenderBehindHead(  desireAngle > 0 && desireAngle < 180 );
+            weaponRenderer.RenderBehindHead(desireAngle > 0 && desireAngle < 180);
         }
     }
 

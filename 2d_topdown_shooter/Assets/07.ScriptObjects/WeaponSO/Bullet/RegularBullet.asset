@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e500d56ae85a8f64d990ab07a3eda592, type: 3}
   m_Name: RegularBullet
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 5
   bulletSpeed: 20
   impactObstaclePrefab: {fileID: 6882460513744357865, guid: bded2bcbe27340f4cb3cdb0686262dfc, type: 3}
   impactEnemyPrefab: {fileID: 493990676865212878, guid: db60b518838f5444aba254bd92058b4a, type: 3}
