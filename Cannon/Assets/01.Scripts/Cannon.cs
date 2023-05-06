@@ -32,6 +32,8 @@ public class Cannon : MonoBehaviour
         curRotate = Mathf.Clamp(curRotate, 0, 90);
 
         barrelTrm.rotation = Quaternion.Euler(0, 0, curRotate);
+
+        UIManager.Instance.SetAngleText(curRotate);
     }
 
     private void CheckFire()
@@ -39,7 +41,7 @@ public class Cannon : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             // 방향 힘 무엇
-        
+            curPower = 0;
         }
 
         if (Input.GetButton("Jump"))
@@ -52,12 +54,8 @@ public class Cannon : MonoBehaviour
         {
             CannonBall ball = Instantiate(ballPrefab, firePos.position, Quaternion.identity);
             ball.Fire(firePos.right, curPower);
-            curPower = 0;
         }
 
-        // 점프 누르면 차징 시작되고
-        // 점프 떼는 순간 차징 된 값으로 발사
-        // 차징된 파워는 맥스 값 넘어갈 수 없음
-
+        UIManager.Instance.FillGaugeBar(curPower, maxPower);
     }
 }

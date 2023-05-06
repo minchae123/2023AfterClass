@@ -136,3 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99be4776ce80e8848ae4f3f758b6b06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatIsTarget:
+    serializedVersion: 2
+    m_Bits: 64
+  expRadius: 2.5
+  expPrefab: {fileID: 92457334778857902, guid: c7f2b6b24cec99b45bfecf13d50b1152, type: 3}
