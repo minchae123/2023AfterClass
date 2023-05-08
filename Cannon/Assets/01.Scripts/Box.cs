@@ -14,6 +14,11 @@ public class Box : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    private void Update()
+    {
+       
+    }
+
     public void DestroyBox(Vector2 dir)
     {
         ParticleSystem trail = Instantiate(trailPrefab, transform.position, Quaternion.identity);
