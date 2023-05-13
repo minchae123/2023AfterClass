@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class CameraManager : MonoBehaviour
+public class CameraManagers : MonoBehaviour
 {
-    public static CameraManager Instance;
+    public static CameraManagers Instance;
     [SerializeField] CinemachineVirtualCamera followCam;
     private Camera mainCam;
     public Camera MainCam

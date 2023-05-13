@@ -1,15 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CannonBall : MonoBehaviour
 {
+    public event Action OnExplosion;
+
     private Rigidbody2D rigid;
     [SerializeField] private LayerMask whatIsTarget;
     [SerializeField] private float expRadius = 2.5f;
 
     [SerializeField] private Explosion expPrefab;
 
+    [SerializeField] private float lifeTime = 3f;
+    private float curLifeTime = 0;
 
     private void Awake()
     {
@@ -19,6 +24,25 @@ public class CannonBall : MonoBehaviour
     public void Fire(Vector2 dir, float power)
     {
         rigid.AddForce(dir * power, ForceMode2D.Impulse);
+    }
+
+    private void Update()
+    {
+        curLifeTime += Time.deltaTime;
+        if(curLifeTime > lifeTime)
+        {
+            DestroyBall();
+        }
+    }
+
+    private void DestroyBall()
+    {
+        OnExplosion?.Invoke();
+
+        Explosion exp = Instantiate(expPrefab, transform.position, Quaternion.identity);
+        exp.PlayParticle();
+
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -32,17 +56,14 @@ public class CannonBall : MonoBehaviour
         {
             Box box = c.GetComponent<Box>();
 
-            Vector2 dir = (c.transform.position - transform.position).normalized;
+            Vector2 dir = (c.transform.position - transform.position);
 
-            // 거리에 반비례해서 거리가 가까우면 5 멀어지면 2f 점진적으로 낮아지도록 하되 2f 밑으로는 안떨어짐
-            // explosionRadius , lerp 잘 활용 
-            
-            box.DestroyBox(dir);
+            float percent = dir.magnitude / expRadius;
+            float power = Mathf.Lerp(maxPower, minPower, percent);
+
+            box.DestroyBox(dir.normalized * power + new Vector2(0, 4f));
         }
 
-        Explosion exp = Instantiate(expPrefab, transform.position, Quaternion.identity);
-        exp.PlayParticle();
-
-        Destroy(gameObject);
+        DestroyBall();
     }
 }

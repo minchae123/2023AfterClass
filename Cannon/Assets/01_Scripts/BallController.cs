@@ -48,7 +48,7 @@ public class BallController : MonoBehaviour
         {
             state = BallState.CHARGING;
             TimeController.Instance.SetTimeScale(0.4f);
-            CameraManager.Instance.Zoom(4f);
+            CameraManagers.Instance.Zoom(4f);
         }
 
         if (Input.GetMouseButton(0) && state == BallState.CHARGING)
@@ -61,7 +61,7 @@ public class BallController : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && state == BallState.CHARGING)
         {
             TimeController.Instance.SetTimeScale(1);
-            CameraManager.Instance.Zoom(7f);
+            CameraManagers.Instance.Zoom(7f);
 
             state = BallState.IDLE;
             //state = BallState.FIRE;
