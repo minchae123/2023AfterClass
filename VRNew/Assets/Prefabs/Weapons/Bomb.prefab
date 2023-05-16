@@ -80,7 +80,19 @@ MonoBehaviour:
       m_Calls: []
   m_LastHoverExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5456531992436509304}
+        m_TargetAssemblyTypeName: Bomb, Assembly-CSharp
+        m_MethodName: Drop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -101,7 +113,19 @@ MonoBehaviour:
       m_Calls: []
   m_Activated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5456531992436509304}
+        m_TargetAssemblyTypeName: Bomb, Assembly-CSharp
+        m_MethodName: Throw
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
@@ -194,6 +218,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145f03f76006a7c4d8d11c121d8b9dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnExplosion:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRecycle:
+    m_PersistentCalls:
+      m_Calls: []
+  explosionRadius: 2
+  explosionHittableMask:
+    serializedVersion: 2
+    m_Bits: 4194304
+  recycleDelay: 1
 --- !u!1 &7404506869531974949
 GameObject:
   m_ObjectHideFlags: 0
