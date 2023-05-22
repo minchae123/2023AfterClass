@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
 {
-    [SerializeField] private Transform pfWoodHarvester;
-    [SerializeField] private Transform pfStoneHarvester;
-    [SerializeField] private Transform pfGoldHarvester;
+    [SerializeField] private BuildingTypeSO pfWoodHarvester;
+    [SerializeField] private BuildingTypeSO pfStoneHarvester;
+    [SerializeField] private BuildingTypeSO pfGoldHarvester;
 
     private Transform selectBuilding;
 
     private void Awake()
     {
-        selectBuilding = pfWoodHarvester;
+        selectBuilding = pfWoodHarvester.prefab;
     }
 
     private void Update()
@@ -24,17 +24,17 @@ public class BuildingManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            selectBuilding = pfWoodHarvester;
+            selectBuilding = pfWoodHarvester.prefab;
         }
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            selectBuilding = pfStoneHarvester;
+            selectBuilding = pfStoneHarvester.prefab;
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            selectBuilding = pfGoldHarvester;
+            selectBuilding = pfGoldHarvester.prefab;
         }
 
     }

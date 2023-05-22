@@ -480,6 +480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4dec5c44ad1fc34599a5e5b01323e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pfWoodHarvester: {fileID: 1313525390460917452, guid: 10448c6b8c38df84fb70a8df1ebaeca6, type: 3}
-  pfStoneHarvester: {fileID: 1717815858088099864, guid: dbc1c5e1cc5a11d4aa4849598a703214, type: 3}
-  pfGoldHarvester: {fileID: 1437726138953504906, guid: 8fc3ef1c8c9750441863a25e72c5352b, type: 3}
+  pfWoodHarvester: {fileID: 11400000, guid: 98e61617640a33840aa139dd5d52a227, type: 2}
+  pfStoneHarvester: {fileID: 11400000, guid: 32bf76e60fff3794aaa42b1fb6e3fcde, type: 2}
+  pfGoldHarvester: {fileID: 11400000, guid: 4807414ffd62ea8428f2e6a8b467fdd7, type: 2}
