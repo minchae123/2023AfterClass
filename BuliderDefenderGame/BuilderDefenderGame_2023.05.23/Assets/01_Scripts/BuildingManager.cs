@@ -12,7 +12,7 @@ public class BuildingManager : MonoBehaviour
     {
         buildingTypeList = Resources.Load<BuildingTypeListSO>(typeof(BuildingTypeListSO).Name);
     }
-    private void Start()
+    private void Start() 
     {
         buildingType = buildingTypeList.list[0];
         mainCamera = Camera.main;
@@ -35,9 +35,6 @@ public class BuildingManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             buildingType = buildingTypeList.list[2];
-        }
-        if(Input.GetKeyDown(KeyCode.R)){
-            buildingType = buildingTypeList.list[3];
         }
     }
 
