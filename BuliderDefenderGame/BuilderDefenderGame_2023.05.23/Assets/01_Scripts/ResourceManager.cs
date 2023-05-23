@@ -24,7 +24,6 @@ public class ResourceManager : MonoBehaviour
     public void AddResource(ResourceTypeSO resourceType, int amount)
     {
         resourceAmountDic[resourceType] += amount;
-        LogResource();
     }
 
     private void LogResource()
@@ -33,5 +32,9 @@ public class ResourceManager : MonoBehaviour
         {
             Debug.Log(resourceType.nameString + " : " + resourceAmountDic[resourceType]);
         }
+    }
+
+    public int GetResourceAmount(ResourceTypeSO resourceType){
+        return resourceAmountDic[resourceType];
     }
 }
