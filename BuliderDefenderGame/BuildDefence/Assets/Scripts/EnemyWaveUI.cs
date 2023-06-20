@@ -15,6 +15,15 @@ public class EnemyWaveUI : MonoBehaviour
         waveMessageText = transform.Find("waveMessageText").GetComponent<TextMeshProUGUI>();
     }
 
+    private void Start() {
+        enemyWaveManager.OnWaveNumverChanged += EnemyWaveManager_OnWaveNumverChange;
+    }
+
+    private void EnemyWaveManager_OnWaveNumverChange(object sender, System.EventArgs e)
+    {
+            SetWaveNumberText("Wave" + enemyWaveManager.GetWaveNumver());
+
+    }
     private void Update() {
         float waveSpawnerTimer = enemyWaveManager.GetNextSpawnerTimer();
         if(waveSpawnerTimer <= 0)
