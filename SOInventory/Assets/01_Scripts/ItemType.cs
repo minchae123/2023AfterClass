@@ -23,7 +23,7 @@ public class ItemType : MonoBehaviour
         item_name = itemObj.name;
         abillty = new ItemAbility[itemObj.itemData.abillty.Length];
 
-        for(int i = 0; i < abillty.Length; i++)
+        for(int i = 0; i < abillty.Length; ++i)
         {
             abillty[i] = new ItemAbility(itemObj.itemData.abillty[i].Min, itemObj.itemData.abillty[i].Max)
             {

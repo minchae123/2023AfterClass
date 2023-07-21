@@ -11,9 +11,10 @@ public enum ItemObjType : int
 }
 
 [CreateAssetMenu(fileName = "New Item",  menuName = "Inventory System/Items/New Item")]
-public class ItemObj : MonoBehaviour
+public class ItemObj : ScriptableObject
 {
     public ItemType itemType;
+    public ItemObjType itemObjType;
     public bool getFlagsStackable;
 
     public Sprite itemIcon;
