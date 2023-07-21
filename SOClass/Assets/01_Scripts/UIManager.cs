@@ -5,6 +5,19 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    private static UIManager instance;
+    public static UIManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<UIManager>();
+            }
+            return instance;
+        }
+    }
+
     TextMeshProUGUI textMeshProUGUI;
 
     private void Start()
@@ -14,6 +27,6 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        textMeshProUGUI.text = "exp : " + GlobalData.playerExperience;
+        textMeshProUGUI.text = "exp : " + GlobalData.Instance.playerExperience;
     }
 }

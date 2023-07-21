@@ -6,6 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     private void Start()
     {
-        GlobalData.playerExperience += 100;
+        GlobalData.Instance.playerExperience += 100;
     }
 }
