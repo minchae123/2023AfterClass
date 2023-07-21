@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameSetting resoucePath;
+    private static GameManager instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<GameManager>();
+            }
+            return instance;
+        }
+    }
 
     private void Start()
     {
-        resoucePath = Resources.Load<GameSetting>("ResoucePathAsset");
+        GameSettingSO setting = Resources.Load<GameSettingSO>("GameSettingSO");
+    }
 
-        GameObject characterPrefab = Resources.Load<GameObject>(resoucePath.characterPrefabPath);
+    public void GameSetting(GameSettingSO so)
+    {
 
-        Instantiate(characterPrefab);
     }
 }
