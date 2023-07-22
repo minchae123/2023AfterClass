@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.Linq;
 using UnityEngine;
 
 public enum InterfaceType
@@ -35,5 +37,10 @@ public class InventoryObj : ScriptableObject
         }
     }
 
+    public Action<ItemObj> OnUseItemObj;
 
+    public InventorySlot SearchitemInven(ItemType item)
+    {
+        return inventorySlots.FirstOrDefault(i => i.itemType.item_id == item.item_id);
+    }
 }

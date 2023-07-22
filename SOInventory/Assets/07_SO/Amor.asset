@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8aacb2df2f33554c8ffe8a1a77e413d, type: 3}
   m_Name: Amor
   m_EditorClassIdentifier: 
-  itemType: {fileID: 0}
-  itemObjType: 3
+  itemType:
+    abillty: []
+    item_id: -1
+    item_name: 
+  itemObjType: 1
   getFlagsStackable: 0
   itemIcon: {fileID: 0}
-  objModelPrefab: {fileID: 0}
-  itemData: {fileID: 0}
+  objModelPrefab: {fileID: 100000, guid: d7739944e3990de4bbb0cfdc16f876fa, type: 3}
+  itemData:
+    abillty: []
+    item_id: 0
+    item_name: 
   boneNameLists: []
   itemSummary: 

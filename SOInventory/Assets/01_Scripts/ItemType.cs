@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class ItemType : MonoBehaviour
+public class ItemType
 {
     public ItemAbility[] abillty;
 
