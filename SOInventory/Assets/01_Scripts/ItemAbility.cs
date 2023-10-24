@@ -22,10 +22,16 @@ public class ItemAbility
         this.min = min;
         this.max = max;
 
+        GetStackVal();
     }
 
     public void GetStackVal()
     {
         valStack = UnityEngine.Random.Range(min, max);
+    }
+
+    public void AddStackVal(ref int v)
+    {
+        v += valStack;
     }
 }
